@@ -4,8 +4,7 @@
  * Link Recognizer
  * @author João Escribano <joao.escribano@gmail.com>
  */
-class LinkReconizer {
-
+class Recognizer {
     private $store;
     private $products = [];
 
@@ -22,6 +21,7 @@ class LinkReconizer {
      * Load products from store XML
      */
     public function loadProducts($url = null) {
+
         /* Checks if the provided URL is valid */
         if ($url === null || !preg_match('/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/', $url)) {
             return false;
@@ -29,8 +29,8 @@ class LinkReconizer {
 
         /* Store the clean URL of the store */
         $this->store = $url;
+        
         /* Check if there is a store product XML */
-
         if (!is_file(dirname(__FILE__) . "/xmls/$url.xml")) {
             return false;
         }
@@ -134,21 +134,5 @@ class LinkReconizer {
         }
 
         return ($tolower === true) ? strtolower($text) : $text;
-    }
-
-    /**
-	 * Process a set of URL's and return an array of the test result
-	 */ 
-    public function test($urls = []) {
-        if (count($urls) == 0) {
-            return false;
-        }
-
-        $results = [];
-        foreach ($urls as $url) {
-            $results[$url] = $this->isProduct($url);
-        }
-
-        return $results;
     }
 }
