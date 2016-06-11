@@ -28,7 +28,6 @@ class RecognizerTest extends TestCase {
         $this->assertTrue($recognizer->isProduct("http://www.lojadojoao.com.br/produto-de-teste-1"));
         $this->assertTrue($recognizer->isProduct("http://www.lojadojoao.com.br/produto-16599221"));
         $this->assertTrue($recognizer->isProduct("http://www.lojadojoao.com.br/p-16599221"));
-
         $this->assertFalse($recognizer->isProduct("http://www.lojadojoao.com.br/myAccount/products"));
         $this->assertFalse($recognizer->isProduct("http://www.lojadojoao.com.br/minhaConta/products"));
         $this->assertFalse($recognizer->isProduct("http://www.lojadojoao.com.br/myAccount"));
@@ -36,6 +35,16 @@ class RecognizerTest extends TestCase {
         $this->assertFalse($recognizer->isProduct("http://www.lojadojoao.com.br/carrinho"));
         $this->assertFalse($recognizer->isProduct("http://www.lojadojoao.com.br/checkout"));
         $this->assertFalse($recognizer->isProduct("http://www.lojadojoao.com.br/promotions"));
+
+        /* Segundo produto adicionado para teste de XML com mais de um produto */
+        $this->assertTrue($recognizer->isProduct("http://www.lojadojoao.com.br/produto-shopback-teste-2-84623738"));
+        $this->assertTrue($recognizer->isProduct("http://www.lojadojoao.com.br/produto-shopback-teste-2-84623738?utm_teste=testando"));
+        $this->assertTrue($recognizer->isProduct("http://www.lojadojoao.com.br/sku/84623738/produto-shopback-teste-2"));
+        $this->assertTrue($recognizer->isProduct("http://www.lojadojoao.com.br/produto-shopback-teste-2/sku/84623738"));
+        $this->assertTrue($recognizer->isProduct("http://www.lojadojoao.com.br/prod/84623738/?google"));
+        $this->assertTrue($recognizer->isProduct("http://www.lojadojoao.com.br/produto-shopback-teste-2"));
+        $this->assertTrue($recognizer->isProduct("http://www.lojadojoao.com.br/produto-84623738"));
+        $this->assertTrue($recognizer->isProduct("http://www.lojadojoao.com.br/p-84623738"));
     }
 
     public function testLojaDaMaria() {
