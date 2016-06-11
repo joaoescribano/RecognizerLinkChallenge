@@ -1,7 +1,6 @@
 <?php
 /**
- * ShopBack Challange
- * Link Recognizer
+ * ShopBack Challange - Link Recognizer
  * @author João Escribano <joao.escribano@gmail.com>
  */
 class Recognizer {

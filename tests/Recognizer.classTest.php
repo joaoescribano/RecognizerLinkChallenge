@@ -1,6 +1,10 @@
 <?php
+/**
+ * ShopBack Challange - Link Recognizer (PHPUnit tests)
+ * @author João Escribano <joao.escribano@gmail.com>
+ */
+require_once(dirname(__FILE__) . '/../src/Recognizer.class.php');
 
-require_once('../src/Recognizer.class.php');
 use phpunit\framework\TestCase;
 
 class RecognizerTest extends TestCase {
