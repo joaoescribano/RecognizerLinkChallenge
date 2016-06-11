@@ -6,6 +6,7 @@
 class Recognizer {
     private $store;
     private $products = [];
+    private $badWords = ['campanha', 'p', 'id'];
 
     /**
      * Class constructor (auto initialization)
@@ -66,6 +67,8 @@ class Recognizer {
             return false;
         }
 
+        // echo $visitedURL . "\n";
+
         /* URL Padronization */
         $visitedURL = str_replace(['http://', 'https://', "www.", $this->store], ['', '', '', ''], $visitedURL);
         if (substr($visitedURL, 0, 1) == '/') {
@@ -97,8 +100,13 @@ class Recognizer {
 
             /* Build product link pattern with underline */
             $tmpLink    = implode("|", explode("/", $this->text2url($tmpLink, " ")));
-            $tmpLink    = explode("_", $tmpLink)[0];
-            $patterns[] = $tmpLink;
+            $tmpLink    = explode("_", $tmpLink);
+
+            foreach ($tmpLink as $key => $value) {
+                if (strlen($value) > 1 && !in_array($value, $this->badWords)) {
+                    $patterns[] = $value;
+                }
+            }
         }
 
         /* Test the patters to discover product pages */
