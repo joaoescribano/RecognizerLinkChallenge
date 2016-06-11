@@ -55,6 +55,7 @@ class RecognizerTest extends TestCase {
         $this->assertTrue($recognizer->isProduct("http://www.lojadamaria.com.br/perfume-the-one-sport-masculino-edt"));
 
         /* Links que não são produtos, espera-se um retorno FALSE para os testes */
+        $this->assertFalse($recognizer->isProduct("http://www.lojadamaria.com.br/"));
         $this->assertFalse($recognizer->isProduct("http://www.lojadamaria.com.br/search/helloword"));
         $this->assertFalse($recognizer->isProduct("http://www.lojadamaria.com.br/categoria-legais"));
 
@@ -65,7 +66,6 @@ class RecognizerTest extends TestCase {
         $this->assertTrue($recognizer->isProduct("http://www.lojadamaria.com.br/perfume-the-one-sport-masculino-edt"));
         $this->assertTrue($recognizer->isProduct("http://www.lojadamaria.com.br/produto-12345"));
         $this->assertTrue($recognizer->isProduct("http://www.lojadamaria.com.br/p-12345"));
-
         $this->assertFalse($recognizer->isProduct("http://www.lojadamaria.com.br/myAccount/products"));
         $this->assertFalse($recognizer->isProduct("http://www.lojadamaria.com.br/minhaConta/products"));
         $this->assertFalse($recognizer->isProduct("http://www.lojadamaria.com.br/myAccount"));
@@ -83,6 +83,7 @@ class RecognizerTest extends TestCase {
         $this->assertTrue($recognizer->isProduct("http://www.lojadoze.com.br/chapeu-caipira-de-palha-desfiado?google"));
 
         /* Links que não são produtos, espera-se um retorno FALSE para os testes */
+        $this->assertFalse($recognizer->isProduct("http://www.lojadoze.com.br/"));
         $this->assertFalse($recognizer->isProduct("http://www.lojadoze.com.br/home"));
         $this->assertFalse($recognizer->isProduct("http://www.lojadoze.com.br/categoria-teste"));
 
@@ -93,7 +94,6 @@ class RecognizerTest extends TestCase {
         $this->assertTrue($recognizer->isProduct("http://www.lojadoze.com.br/chapeu-caipira-de-palha-desfiado"));
         $this->assertTrue($recognizer->isProduct("http://www.lojadoze.com.br/produto-8595"));
         $this->assertTrue($recognizer->isProduct("http://www.lojadoze.com.br/p-8595"));
-
         $this->assertFalse($recognizer->isProduct("http://www.lojadoze.com.br/myAccount/products"));
         $this->assertFalse($recognizer->isProduct("http://www.lojadoze.com.br/minhaConta/products"));
         $this->assertFalse($recognizer->isProduct("http://www.lojadoze.com.br/myAccount"));
